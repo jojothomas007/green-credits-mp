@@ -1,0 +1,27 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python Debugger: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Streamlit Debug",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "C:/Users/jojot/AppData/Local/pypoetry/Cache/virtualenvs/green-credits-mp-t0yOOak7-py3.12/Scripts/streamlit.exe",
+            "console": "integratedTerminal",
+            "args": ["run", "${workspaceFolder}/Home.py"],
+            "env": {
+                "PATH": "${workspaceFolder}/path_to_poetry_env/bin:${env:PATH}"
+            }
+          }
+      
+    ]
+}
