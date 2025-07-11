@@ -2,7 +2,7 @@ import streamlit as st
 
 def render():
     st.set_page_config(page_title="Personal Registration", layout="centered")
-    st.title("🌱 Carbon Credit Buyer Registration")
+    st.title("🌱 Carbon Credit Seller Registration")
 
     # Initialize session state to track if registration was successful
     if "registration_successful" not in st.session_state:
@@ -29,11 +29,11 @@ def render():
             email = st.text_input("Email Address *")
             phone = st.text_input("Phone Number *")
 
-            # Cultivation Details
-            st.subheader("Cultivation Details (if applicable)")
-            has_cultivation = st.checkbox("I have cultivation details to add")
-            cultivation_type = st.text_input("Cultivation Type", disabled=not has_cultivation)
-            cultivation_area = st.number_input("Cultivation Area (acres)", min_value=0.0, disabled=not has_cultivation)
+            # Credit Type Details
+            credit_type = st.selectbox("Credit Type *", ["Vegitation", "Solar power", "Wind power", "Other"])
+            lattitude = st.text_input("Lattitude *", value="0.0")
+            longitude = st.text_input("Longitude *", value="0.0")
+            land_area = st.number_input("Land Area (acres) *", min_value=0.0, step=0.1)
             
             # Account Information
             st.subheader("Account Information")
@@ -54,7 +54,11 @@ def render():
                     "Email": email,
                     "Phone": phone,
                     "Username": username,
-                    "Password": password
+                    "Password": password,                    
+                    "credit_type": email,
+                    "lattitude": phone,
+                    "longitude": username,
+                    "land_area": password
                 }
                 
                 empty_fields = [field for field, value in required_fields.items() if not value and not (isinstance(value, (int, float)))]
@@ -65,27 +69,7 @@ def render():
                     st.error("❗ Passwords do not match")
                 elif not terms:
                     st.warning("📜 Please accept the Terms & Conditions to proceed")
-                else:
-                    # Prepare data to store in session state
-                    st.session_state.personal_info = {
-                        "name": name,
-                        "age": age,
-                        "country": country,
-                        "state": state,
-                        "zip_code": zip_code,
-                        "email": email,
-                        "phone": phone
-                    }
-                    
-                    # Store cultivation info if provided
-                    if has_cultivation:
-                        st.session_state.cultivation_info = {
-                            "type": cultivation_type,
-                            "area": cultivation_area
-                        }
-                    else:
-                        st.session_state.cultivation_info = {}
-                    
+                else:                    
                     # Set session state to mark successful registration
                     st.session_state.registration_successful = True
                     st.session_state.registered_name = name
@@ -94,16 +78,7 @@ def render():
         # Display success message after successful registration
         st.success(f"✅ Registration successful for {st.session_state.registered_name}!")
         st.markdown("Refresh the browser to proceed to login.")
-        
-        # Show a preview of the registered information
-        st.subheader("Registered Information")
-        if hasattr(st.session_state, 'personal_info'):
-            st.json(st.session_state.personal_info)
-        
-        if hasattr(st.session_state, 'cultivation_info') and st.session_state.cultivation_info:
-            st.subheader("Cultivation Details")
-            st.json(st.session_state.cultivation_info)
-            
+                    
         if st.button("Register Another Account"):
             st.session_state.registration_successful = False
             st.rerun()
