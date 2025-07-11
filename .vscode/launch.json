@@ -15,7 +15,7 @@
             "name": "Streamlit Debug",
             "type": "debugpy",
             "request": "launch",
-            "program": "C:/Users/jojot/AppData/Local/pypoetry/Cache/virtualenvs/green-credits-mp-t0yOOak7-py3.12/Scripts/streamlit.exe",
+            "program": "C:/Users/shinoj.m/AppData/Local/pypoetry/Cache/virtualenvs/green-credits-mp-vjUZ10JR-py3.12/Scripts/streamlit.exe",
             "console": "integratedTerminal",
             "args": ["run", "${workspaceFolder}/Home.py"],
             "env": {
