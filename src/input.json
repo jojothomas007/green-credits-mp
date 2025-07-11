@@ -1,0 +1,21 @@
+{
+    "personal_info": {
+        "name": "shinoj mp",
+        "age": 1,
+        "country": "",
+        "state": "",
+        "zip_code": ""
+    },
+    "cultivation_info": [
+        {
+            "crop_type": "Vegetables",
+            "area_size": "4",
+            "geo_location": "8.542374766613205, 76.86709373844825"
+        },
+        {
+            "crop_type": "Vegetables",
+            "area_size": "4",
+            "geo_location": "8.542374766613205, 76.86709373844825"
+        }
+    ]
+}
