@@ -1,44 +1,59 @@
 import streamlit as st
+import json
 
-st.set_page_config(page_title="Carbon Credit Hub", layout="wide")
-st.title("🌿 Carbon Credit Marketplace - Home")
+# Set up the page
+st.set_page_config(page_title="Farmer Data Portal", layout="wide")
+st.title("🌾 Farmer Data Management Portal")
 
-# Hero Section
-st.markdown("""
-## Welcome to Your Carbon Offset Dashboard
-Helping industries transition to a greener future 🌍
-""")
+# Login Section
+st.sidebar.title("🔒 Login")
+username = st.sidebar.text_input("Username")
+password = st.sidebar.text_input("Password", type="password")
+login_button = st.sidebar.button("Login")
 
-# Highlight Cards
-col1, col2, col3 = st.columns(3)
+if login_button:
+    if username == "admin" and password == "password":  # Replace with proper authentication
+        st.sidebar.success("Login successful!")
+        st.session_state["logged_in"] = True
+    else:
+        st.sidebar.error("Invalid credentials")
 
-with col1:
-    st.metric("Credits Owned", "4,500 tons", delta="+500 this month")
-    st.progress(0.45)
+# Check if logged in
+if st.session_state.get("logged_in", False):
+    # Farmer Page
+    st.subheader("📂 Upload Farmer Data")
+    uploaded_file = st.file_uploader("Upload JSON File", type=["json"])
 
-with col2:
-    st.metric("Credits Purchased", "₹18,00,000")
-    st.success("🌟 Verified Buyer Status")
+    if uploaded_file:
+        try:
+            farmer_data = json.load(uploaded_file)
+            st.success("File uploaded successfully!")
+            st.json(farmer_data)
+        except Exception as e:
+            st.error(f"Error reading file: {e}")
 
-with col3:
-    st.metric("Total Offset", "4,500 tons CO₂")
-    st.caption("Equivalent to planting 7,200 trees 🌲")
+    # Search Farmer Section
+    st.subheader("🔍 Search Farmer")
+    search_query = st.text_input("Enter Farmer Name or ID")
+    search_button = st.button("Search")
 
-# Recent Activity
-st.subheader("📊 Recent Transactions")
-st.table([
-    {"Date": "2025-07-10", "Project": "Green Forest Initiative", "Credits": 1000, "Cost": "₹4,00,000"},
-    {"Date": "2025-06-22", "Project": "SunPower Renewables", "Credits": 800, "Cost": "₹2,80,000"},
-])
-
-# Marketplace Stats
-st.subheader("🌐 Marketplace Stats")
-st.markdown("""
-- 🏷 Total Verified Projects: **42**
-- 💰 Average Price per Credit: **₹410**
-- 🌎 Global Participants: **120+ Industrial Buyers**
-""")
-
-# Call-to-Action
-st.markdown("---")
-st.markdown("🎯 **Ready to offset more emissions?** [Explore Projects →](#)")
+    if search_button and uploaded_file:
+        results = [
+            farmer for farmer in farmer_data.get("farmers", [])
+            if search_query.lower() in farmer.get("name", "").lower()
+        ]
+        if results:
+            for farmer in results:
+                st.write(f"**Name:** {farmer['name']}")
+                st.write(f"**Area Size:** {farmer['area_size']} acres")
+                st.write(f"**Geo Location:** {farmer['geo_location']}")
+                verify_button = st.button(f"Verify Geo Location for {farmer['name']}")
+                if verify_button:
+                    st.success("Geo Location Verified ✅")
+                quarterly_button = st.button(f"Quarterly Check-in for {farmer['name']}")
+                if quarterly_button:
+                    st.warning("Geo Location Not Verified ⚠️")
+        else:
+            st.warning("No matching farmers found.")
+else:
+    st.warning("Please log in to access the portal.")
