@@ -39,7 +39,7 @@ jobs:
           chmod +x run.sh
 
       - name: Zip app for deployment
-        run: zip -r release.zip . -x "venv/*"
+        run: zip -r release.zip . -x "*.git*" "*.github*"  # Exclude hidden folders
 
       - name: Upload deployment artifact
         uses: actions/upload-artifact@v4
@@ -63,7 +63,7 @@ jobs:
       - name: Unzip artifact
         run: unzip release.zip
 
-      - name: Login to Azure
+      - name: Azure login
         uses: azure/login@v2
         with:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_B039F3EA59D247D09E20C1192E5DD8C0 }}
