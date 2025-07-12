@@ -35,7 +35,7 @@ jobs:
         run: |
           echo "#!/bin/bash" > run.sh
           echo "pip install -r requirements.txt" >> run.sh
-          echo "streamlit run app.py --server.port=8000 --server.address=0.0.0.0" >> run.sh
+          echo "streamlit run main.py --server.port=8000 --server.address=0.0.0.0" >> run.sh
           chmod +x run.sh
 
       - name: Zip app for deployment
