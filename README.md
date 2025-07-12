@@ -1,23 +1,52 @@
 # Green Credits MP
 
-Poetry:
+## Overview
+Green Credits MP is a platform designed to help farmers manage their carbon credits. It provides features such as user authentication, personal information management, cultivation details tracking, and a dashboard for monitoring activities.
 
-Dependency management and packaging:
-poetry is a tool for dependency management and packaging in Python.
-It uses pyproject.toml for configuration.
+## Features
+- **Login and Registration**: Secure login and registration for farmers.
+- **Farmer Dashboard**: A central hub for managing personal information, cultivation details, and carbon credit scores.
+- **Personal Information Management**: Update and manage personal details.
+- **Cultivation Details**: Add and track cultivation-related information, including crop type, area size, and geo-location.
+- **Information Preview**: show all personal and cultivation details .
 
-Install: pip install poetry
-Create: poetry new myproject
-Initialize in existing project: poetry init
-Activate: poetry env activate
-Install packages: poetry add package_name
+## Installation
 
-Generate EXE
+### Poetry
+Poetry is used for dependency management and packaging.
+
+1. Install Poetry:
+   ```sh
+   pip install poetry
+   ```
+2. Create a new project:
+   ```sh
+   poetry new myproject
+   ```
+3. Initialize in an existing project:
+   ```sh
+   poetry init
+   ```
+4. Activate the virtual environment:
+   ```sh
+   poetry env activate
+   ```
+5. Install packages:
+   ```sh
+   poetry add package_name
+   ```
+
+## Generate EXE
 ************
+To generate an executable file, use PyInstaller with the following command:
+```sh
 poetry run pyinstaller --onefile --windowed main.py
+```
 
 
-Streamlit
+## Streamlit
 *********
+To run the Streamlit app, use the following command:
+```sh
 streamlit run first_app.py
-C:/Users/jojot/AppData/Local/pypoetry/Cache/virtualenvs/transcribe-and-test-7DAX4R_1-py3.12/Scripts/python.exe C:/Users/jojot/AppData/Local/pypoetry/Cache/virtualenvs/transcribe-and-test-7DAX4R_1-py3.12/Scripts/streamlit.exe run c:/Work/workspace/vscode/transcribe-and-test/streamlit_app.py
+
