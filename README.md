@@ -1,7 +1,5 @@
 # Green Credits MP
 
-## Overview
-
 Green Credits MP is a Python-based application designed to facilitate the management and trading of carbon credits. It provides an interactive dashboard for users to track their credits, view marketplace statistics, and explore projects to offset their carbon emissions.
 
 ---
