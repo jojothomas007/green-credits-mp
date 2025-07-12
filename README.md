@@ -1,23 +1,61 @@
-# Green Credits MP
+# 🌾 Farmer Data Management Portal
 
-Poetry:
+This is a Streamlit-based web application for managing farmer data. The app allows users to upload farmer data in JSON format, search for farmers by name, and verify geo-location details for crops.
 
-Dependency management and packaging:
-poetry is a tool for dependency management and packaging in Python.
-It uses pyproject.toml for configuration.
+## Features
 
-Install: pip install poetry
-Create: poetry new myproject
-Initialize in existing project: poetry init
-Activate: poetry env activate
-Install packages: poetry add package_name
+1. **Login System**:
+   - Secure login with username and password.
 
-Generate EXE
-************
-poetry run pyinstaller --onefile --windowed main.py
+2. **Upload Farmer Data**:
+   - Upload a JSON file containing farmer details.
+   - Displays personal and cultivation information.
+
+3. **Search Farmer**:
+   - Search for a farmer by name.
+   - Displays personal and cultivation information if a match is found.
+   - If no match is found, dummy data is displayed.
+
+4. **Geo-Location Verification**:
+   - Verify geo-location for each crop.
+   - Displays a green "✅ Verified" status upon verification.
+   - Includes a "Quarterly Check-in" button to reset the status to "⚠️ Not Verified."
 
 
-Streamlit
-*********
-streamlit run first_app.py
-C:/Users/jojot/AppData/Local/pypoetry/Cache/virtualenvs/transcribe-and-test-7DAX4R_1-py3.12/Scripts/python.exe C:/Users/jojot/AppData/Local/pypoetry/Cache/virtualenvs/transcribe-and-test-7DAX4R_1-py3.12/Scripts/streamlit.exe run c:/Work/workspace/vscode/transcribe-and-test/streamlit_app.py
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-repo/farmer-data-portal.git
+   cd farmer-data-portal
+   ```
+2. Install dependencies:
+   ```bash
+   poetry install
+   ```
+3. Activate the virtual environment:
+   ```bash
+   poetry shell
+   ```
+4. Run the application:
+   ```bash
+   streamlit run app.py
+   ```
+
+## Usage
+
+- Access the application in your web browser at `http://localhost:8501`.
+- Log in using the credentials 
+- Upload a JSON file with farmer data 
+- Search for farmers and verify geo-location details as needed.
+
+## Development
+
+- This project is built using Python, Streamlit, and other open-source libraries.
+- Contributions are welcome! Please submit a pull request or open an issue for discussion.
+
+
+## Acknowledgments
+
+- Inspired by the need for efficient farmer data management and accessibility.
+- Built with passion for empowering farmers and enhancing agricultural productivity.
